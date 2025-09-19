@@ -1,11 +1,6 @@
+<!-- First Generator -->
 <div>
-  <input
-    id="inputNumber"
-    type="number"
-    [(ngModel)]="inputNumber"
-    min="1"
-    placeholder="Enter a positive integer"
-  />
+  <input id="inputNumber" type="number" [(ngModel)]="inputNumber" min="1" />
 
   <button
     (click)="generateRandomSequence()"
@@ -18,5 +13,41 @@
 @if (randomSequence && randomSequence.length > 0) {
 <div>
   <p>{{ randomSequence.join(", ") }}</p>
+</div>
+}
+
+<!-- Second Generator -->
+<div>
+  <input id="inputNumber2" type="number" [(ngModel)]="inputNumber2" min="1" />
+
+  <button
+    (click)="generateRandomSequence2()"
+    [disabled]="!inputNumber2 || inputNumber2 < 1"
+  >
+    Generate
+  </button>
+</div>
+
+@if (randomSequence2 && randomSequence2.length > 0) {
+<div>
+  <p>{{ randomSequence2.join(", ") }}</p>
+</div>
+}
+
+<!-- Third Generator -->
+<div>
+  <input id="inputNumber3" type="number" [(ngModel)]="inputNumber3" min="1" />
+
+  <button
+    (click)="generateRandomSequence3()"
+    [disabled]="!inputNumber3 || inputNumber3 < 1"
+  >
+    Generate
+  </button>
+</div>
+
+@if (randomSequence3 && randomSequence3.length > 0) {
+<div>
+  <p>{{ randomSequence3.join(", ") }}</p>
 </div>
 }
