@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.loadFromSessionStorage();
+    this.loadFromLocalStorage();
   }
 
   generateRandomSequence() {
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
 
     this.randomSequence = sequence;
     this.inputNumber = num; // Ensure it's stored as number
-    this.saveToSessionStorage();
+    this.saveToLocalStorage();
   }
 
   generateRandomSequence2() {
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
 
     this.randomSequence2 = sequence;
     this.inputNumber2 = num; // Ensure it's stored as number
-    this.saveToSessionStorage();
+    this.saveToLocalStorage();
   }
 
   generateRandomSequence3() {
@@ -88,45 +88,42 @@ export class AppComponent implements OnInit {
 
     this.randomSequence3 = sequence;
     this.inputNumber3 = num; // Ensure it's stored as number
-    this.saveToSessionStorage();
+    this.saveToLocalStorage();
   }
 
-  private saveToSessionStorage() {
+  private saveToLocalStorage() {
     // First generator
-    sessionStorage.setItem(
-      "randomGenerator_input",
-      this.inputNumber.toString()
-    );
-    sessionStorage.setItem(
+    localStorage.setItem("randomGenerator_input", this.inputNumber.toString());
+    localStorage.setItem(
       "randomGenerator_output",
       JSON.stringify(this.randomSequence)
     );
 
     // Second generator
-    sessionStorage.setItem(
+    localStorage.setItem(
       "randomGenerator_input2",
       this.inputNumber2.toString()
     );
-    sessionStorage.setItem(
+    localStorage.setItem(
       "randomGenerator_output2",
       JSON.stringify(this.randomSequence2)
     );
 
     // Third generator
-    sessionStorage.setItem(
+    localStorage.setItem(
       "randomGenerator_input3",
       this.inputNumber3.toString()
     );
-    sessionStorage.setItem(
+    localStorage.setItem(
       "randomGenerator_output3",
       JSON.stringify(this.randomSequence3)
     );
   }
 
-  private loadFromSessionStorage() {
+  private loadFromLocalStorage() {
     // First generator
-    const savedInput = sessionStorage.getItem("randomGenerator_input");
-    const savedOutput = sessionStorage.getItem("randomGenerator_output");
+    const savedInput = localStorage.getItem("randomGenerator_input");
+    const savedOutput = localStorage.getItem("randomGenerator_output");
 
     if (savedInput) {
       this.inputNumber = parseInt(savedInput, 10);
@@ -137,8 +134,8 @@ export class AppComponent implements OnInit {
     }
 
     // Second generator
-    const savedInput2 = sessionStorage.getItem("randomGenerator_input2");
-    const savedOutput2 = sessionStorage.getItem("randomGenerator_output2");
+    const savedInput2 = localStorage.getItem("randomGenerator_input2");
+    const savedOutput2 = localStorage.getItem("randomGenerator_output2");
 
     if (savedInput2) {
       this.inputNumber2 = parseInt(savedInput2, 10);
@@ -149,8 +146,8 @@ export class AppComponent implements OnInit {
     }
 
     // Third generator
-    const savedInput3 = sessionStorage.getItem("randomGenerator_input3");
-    const savedOutput3 = sessionStorage.getItem("randomGenerator_output3");
+    const savedInput3 = localStorage.getItem("randomGenerator_input3");
+    const savedOutput3 = localStorage.getItem("randomGenerator_output3");
 
     if (savedInput3) {
       this.inputNumber3 = parseInt(savedInput3, 10);
