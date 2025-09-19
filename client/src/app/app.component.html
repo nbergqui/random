@@ -1,1 +1,22 @@
-<h1>Random UI</h1>
+<div>
+  <input
+    id="inputNumber"
+    type="number"
+    [(ngModel)]="inputNumber"
+    min="1"
+    placeholder="Enter a positive integer"
+  />
+
+  <button
+    (click)="generateRandomSequence()"
+    [disabled]="!inputNumber || inputNumber < 1"
+  >
+    Generate
+  </button>
+</div>
+
+@if (randomSequence && randomSequence.length > 0) {
+<div>
+  <p>{{ randomSequence.join(", ") }}</p>
+</div>
+}
